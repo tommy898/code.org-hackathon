@@ -1,0 +1,44 @@
+//declare variables from the table in a form of list
+var games = getColumn("Esports Earnings","game");
+var genre = getColumn("Esports Earnings","genre");
+var totalEarnings = getColumn("Esports Earnings","total-earnings");
+var onlineEarnings = getColumn("Esports Earnings","online-earnings");
+
+//dropdown function and display info
+onEvent("dropdown", "change", function( ) {
+  for(var i = 0; i < games.length;i++){
+    if(getProperty("dropdown", "value") == games[i]){
+      setText("text_area6","Game Chosen:" + games[i] + "\n" + "Genre:" + genre[i] + "\n"
+      + "Toatal earnings:" + totalEarnings[i] + "\n" + "Online earnings:" + onlineEarnings[i]);
+    } 
+  }
+});
+
+//generate a random game information using function randomNumber
+onEvent("random", "click", function( ) {
+  var i = randomNumber(0,games.length - 1); //get a random index in the list
+  setText("text_area5","Game Chosen:" + games[i] + "\n" + "Genre:" + genre[i] + "\n"
+      + "Toatal earnings:" + totalEarnings[i] + "\n" + "Online earnings:" + onlineEarnings[i]);
+});
+// following 3 functions of going to different screens
+
+//go to random page
+onEvent("gotoRandom", "click", function( ) {
+  setScreen("randomScreen");
+});
+
+//go to choose a game page
+onEvent("goToChoose", "click", function( ) {
+  setScreen("chooseScreen");
+});
+
+//go back to homepage
+onEvent("goback2", "click", function( ) {
+  setScreen("homepage");
+});
+
+onEvent("goback1", "click", function( ) {
+  setScreen("homepage");
+});
+
+
